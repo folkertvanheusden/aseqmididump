@@ -1,3 +1,8 @@
+what is it
+----------
+Dumps the MIDI messages coming in through a ALSA sequencer MIDI-in port (NOT a raw port like "amidi" does).
+
+
 building
 --------
 Install the libasound2-dev package.
