@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <time.h>
 #include <alsa/asoundlib.h>
 
 uint64_t get_us()
