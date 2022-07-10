@@ -32,13 +32,16 @@ int main(int argc, char *argv[])
 			time_t t = when / 1000000;
 			struct tm *tm = localtime(&t);
 
-			printf("%lu (%04d:%02d:%02d %02d:%02d:%02d.%06lu) [%d] Note %s: %2x vel(%2x)\n",
-				when, tm->tm_year + 1900, tm->tm_mon + 1, tm->tm_mday, tm->tm_hour, tm->tm_min, tm->tm_sec, when % 1000000,
+			printf("%lu.%06lu (%04d:%02d:%02d %02d:%02d:%02d.%06lu) [%d] Note %s: %2x vel(%2x)\n",
+				when, when % 1000000,
+				tm->tm_year + 1900, tm->tm_mon + 1, tm->tm_mday, tm->tm_hour, tm->tm_min, tm->tm_sec, when % 1000000,
 				ev->time.tick,
 				ev->type == SND_SEQ_EVENT_NOTEON ? "on " : "off",
 				ev->data.note.note,
 				ev->data.note.velocity);
 		}
+
+		snd_seq_free_event(ev);
 	}
 
 	return 0;
